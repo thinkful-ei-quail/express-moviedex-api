@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/thinkful-ei-quail/express-moviedex-api#readme",
   "dependencies": {
+    "cores": "^0.8.5",
     "express": "^4.17.1",
+    "helmet": "^4.0.0",
     "morgan": "^1.10.0",
     "node": "^14.7.0"
   },
