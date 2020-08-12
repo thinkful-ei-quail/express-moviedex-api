@@ -1,3 +1,5 @@
+
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const store = require('./store');
@@ -13,8 +15,7 @@ app.use(morgan('dev'));
 // console.log(response.genre)
 app.get('/movie', (req, res) => {
   let response = store;
-  // const { genre, country, score } = req.query;
-console.log(req.query)
+  // const { genre, country, score } = req.query;console.log(req.query);  
   if (req.query.genre) {
     response = response.filter(movie => 
       // console.log(movie, "test movie")
@@ -31,7 +32,12 @@ console.log(req.query)
       // console.log("test", response)
     );
   }
-  res.json(response)
+  if (req.query.avg_vote){
+    response=response.filter(movie=>
+      parseInt(movie.avg_vote)===parseInt(req.query.avg_vote)
+    );
+  }
+  res.json(response);
   
 
 
