@@ -3,11 +3,26 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const store = require('./store');
-const cors = require('cors');
+//const cors = require('cors');
+//const { nextTick } = require('process');
 // let response = [...store];
 const app = express();
 // console.log(response)
 app.use(morgan('dev'));
+
+app.use(function validateBearerToken (req,res,next){
+  console.log('validate bearer token middleware');
+
+  next();
+});
+
+app.get('/movie',validateMovies);
+
+function validateMovies(req,res,next){
+  
+
+  next();
+}
 
 
 
